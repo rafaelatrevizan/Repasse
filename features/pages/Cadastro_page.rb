@@ -2,7 +2,7 @@
 class CadastroPage < SitePrism::Page
     element :empreendimento, :xpath, '//a[text() = "Cadastro Empreendimento"]'
     element :novo_empreendimento, :xpath, '//input[@value = "Novo Emp"]'
-    element :button_gravar, :xpath, '//input[@value = "Gravar"]'
+    # element :button_gravar, :xpath, '//input[@value = "Gravar"]'
     element :nome_emp, :xpath, '//input[contains(@id, "txtEmpreendimento")]'
     element :num_contrato, :xpath, '//input[contains(@id, "txtNumContrato")]'
     element :digito, :xpath, '//input[contains(@id, "txtContratoDigEmp")]'
@@ -16,12 +16,12 @@ class CadastroPage < SitePrism::Page
         novo_empreendimento.click
     end
     
-    def button_gravar               
-        button_gravar.click
+    def button_gravar
+        find(:xpath, '//input[@value = "Gravar"]').click               
     end
 
     def scroll_ate_elemento
-        page.execute_script "window.scrollTo(0,100000000)" 
+        page.execute_script "window.scrollTo(0,1000000)" 
     end
 
     def dados_empreendiemento(nomeemp, numcontrato, digit)
@@ -47,7 +47,7 @@ class CadastroPage < SitePrism::Page
     end
 
     def fill_bloco
-        find(bloco).set('abc')
+        find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtBloco').set('abc')
     end
 
 

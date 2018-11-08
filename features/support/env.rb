@@ -1,6 +1,7 @@
 require 'rspec'
 require 'capybara/cucumber'
 require 'site_prism'
+require 'pry'
 
 Capybara.register_driver :selenium do |app|
     #selenium selenium_chrome selenium_chrome_healess
