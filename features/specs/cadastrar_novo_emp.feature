@@ -13,11 +13,11 @@ Quando clicar no menu Cadastro empreendimento
 E clico no botão Novo Emp
 
 @nome_divisoes
-Cenário: Validar nome dos blocos de informações
+Cenário: Validar nome dos títulos dos formulários
 Então deverá ser exibidos o nome correto para os blocos de informações
 
 @campos_que_devem_existir
-Cenário: Validar campos para cadastro de novo empreendimento
+Cenário: Validar no KS a exibição das informações sobre Dados do empreendimento e Condições do empreendimento
 Então é exibido os campos
 |NOME           |
 |Empreendimento |
@@ -31,7 +31,7 @@ Quando clicar no botão Gravar
 Então deverá ser exibido mensagem informativa
 
 @cadastra_emp
-Esquema do Cenário: Validar o cadstramento de um novo empreendimento
+Esquema do Cenário: Validar mensagem de cadastro com sucesso
 Quando preencher 'empreendimento', <contrato> e <digito> sobre o empreendimento
 E escolher  as opções de Ceninm e Banco 
 E escolher uma assessoria e contrutora
@@ -55,5 +55,10 @@ Exemplos:
 # Exemplos:
 # |empreendimento         |contrato  |digito|
 # |teste                  |1111111111|66    |
+
+@botao_voltar
+Cenário: Validar a ação do botão Voltar
+Quando clicar no botão Voltar
+Então deverá retornar para a interface de consulta o empreendimento
 
 

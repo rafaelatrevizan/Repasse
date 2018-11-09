@@ -4,6 +4,7 @@ Quando("clico no botão Consultar") do
     sleep 1
   end
   
+  #Cenário 4
   Quando("seleciono um empreendimento") do
     first(:xpath, '//table[@id = "ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_gvEmpreendimento"]/tbody/tr/following-sibling::tr/td/a').click
   end
