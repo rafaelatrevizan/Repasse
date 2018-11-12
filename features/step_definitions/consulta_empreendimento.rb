@@ -1,5 +1,5 @@
 Quando("clico no botão Consultar") do
-    $consulta = ConsultaPage.new
+    $consulta = ConsultaEmpreendimentoPage.new
     $consulta.click_consultar
     sleep 1
   end

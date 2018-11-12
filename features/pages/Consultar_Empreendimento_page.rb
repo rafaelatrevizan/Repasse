@@ -1,4 +1,4 @@
-class ConsultaPage < SitePrism::Page
+class ConsultaEmpreendimentoPage < SitePrism::Page
     element :consultar, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_btnConsultar'    
     
     def click_consultar

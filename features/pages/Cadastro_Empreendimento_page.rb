@@ -1,5 +1,5 @@
 
-class CadastroPage < SitePrism::Page
+class CadastroEmpreendimentoPage < SitePrism::Page
     element :empreendimento, :xpath, '//a[text() = "Cadastro Empreendimento"]'
     element :novo_empreendimento, :xpath, '//input[@value = "Novo Emp"]'
     element :nome_emp, :xpath, '//input[contains(@id, "txtEmpreendimento")]'
@@ -50,7 +50,6 @@ class CadastroPage < SitePrism::Page
     end
 
     def click_button_voltar
-        scroll_ate_elemento
         find(:xpath, '//input[@value = "Voltar"]').click 
     end
 

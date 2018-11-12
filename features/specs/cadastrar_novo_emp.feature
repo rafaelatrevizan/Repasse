@@ -1,7 +1,7 @@
 #language: pt
 #utf-8
 
-@cadastro
+@cadastro_emp
 Funcionalidade: Cadastrar novo empreendimento
 Eu como usuário do portal KS
 Quero acessar o menu de empreendimento
@@ -32,7 +32,7 @@ Então deverá ser exibido mensagem informativa
 
 @cadastra_emp
 Esquema do Cenário: Validar mensagem de cadastro com sucesso
-Quando preencher 'empreendimento', <contrato> e <digito> sobre o empreendimento
+Quando preencher "<nome_emp>", <contrato> e <digito> sobre o empreendimento
 E escolher  as opções de Ceninm e Banco 
 E escolher uma assessoria e contrutora
 E clicar no botão gravar
@@ -40,7 +40,7 @@ E preencher o campo bloco
 Então as informações deverão ser salvas com sucesso
 
 Exemplos:
-|empreendimento         |contrato  |digito|
+|nome_emp         |contrato  |digito|
 |teste                  |1111111111|66    |
 
 # @empreendimento_mesmo_nome

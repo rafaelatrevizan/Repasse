@@ -1,5 +1,5 @@
 Quando("clicar no menu Cadastro empreendimento") do
-    $novo_emp = CadastroPage.new
+    $novo_emp = CadastroEmpreendimentoPage.new
     $novo_emp.menu_empreendimento
   end
   
@@ -42,6 +42,7 @@ Quando("clicar no menu Cadastro empreendimento") do
   #Cenário 15: Validar mensagem de cadastro com sucesso
   Quando("preencher {string}, {int} e {int} sobre o empreendimento") do |valor1, valor2, valor3|
     $novo_emp.dados_empreendiemento(valor1, valor2, valor3)
+    sleep 1
   end
   
   Quando("escolher  as opções de Ceninm e Banco") do
@@ -71,6 +72,7 @@ Quando("clicar no menu Cadastro empreendimento") do
 
   #Cenário 16: Validar a ação do botão Voltar
   Quando("clicar no botão Voltar") do
+    $novo_emp.scroll_ate_elemento
     $novo_emp.click_button_voltar
   end
   
