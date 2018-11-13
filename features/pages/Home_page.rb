@@ -7,8 +7,8 @@ class HomePage < SitePrism::Page
     end
 
     def doLogin_CrediMob
-        $URL = "https://portalcredimobhomolog.interservicer.com.br/Login/Index"
-        visit $URL
+    $URL = "https://portalcredimobhomolog.interservicer.com.br/Login/Index"
+    visit $URL
     end
 
 
