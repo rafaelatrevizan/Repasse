@@ -3,6 +3,8 @@ require 'capybara/cucumber'
 require 'site_prism'
 require 'pry'
 require_relative 'Helper.rb'
+require 'cpf_faker'
+require 'faker'
 
 World(Helper)
 

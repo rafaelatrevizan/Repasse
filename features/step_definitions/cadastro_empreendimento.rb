@@ -36,19 +36,65 @@ Quando("clicar no menu Cadastro empreendimento") do
   
   Então("deverá ser exibido mensagem informativa") do    
     texto1 = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
-    expect(texto1.text).to eql  'Digite o nome do Empreendimento, número do contrato e o digito'
+    expect(texto1.text).to eql  'Erro: Dados obrigatórios não informados.'
   end
 
   #Cenário 15: Validar mensagem de cadastro com sucesso
-  Quando("preencher {string}, {int} e {int} sobre o empreendimento") do |valor1, valor2, valor3|
-    $novo_emp.dados_empreendiemento(valor1, valor2, valor3)
-    sleep 1
+  Quando("preencher nome do empreendimento, contrato e {string}, {string} e {string}") do |valor1, valor2, valor3|
+      $novo_emp.dados_empreendimento1(valor1, valor2, valor3)
+  end
+  
+  Quando("preencher os campos Laudo de avaliação e Validade") do
+    $novo_emp.dados_empreendimento2
+  end
+  
+  Quando("preencher Tipo de matricula e estudo de Viabilidade") do
+    $novo_emp.dados_empreendimento3
+  end
+  
+  # Quando("preencher Mapa de vendas e código GEP") do
+  #   pending # Write code here that turns the phrase above into concrete actions
+  # end
+  
+  Quando("preencher planilha VMD  e Validade") do
+    $novo_emp.dados_empreendimento4
+  end
+  
+  Quando("preencher Tipo de imovel") do
+   $novo_emp.dados_empreendimento5
   end
   
   Quando("escolher  as opções de Ceninm e Banco") do
     $novo_emp.choose_cenim
     $novo_emp.choose_banco
   end
+  
+  Quando("preencher o campo tipo de Garagem") do
+    $novo_emp.tipo_de_garagem
+    sleep 2
+  end
+  
+  Quando("preencher os campos {string}, {string} e {string}") do |string, string2, string3|
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+  
+  Quando("preencher validade de condição especial, certidão unificada e CRF") do
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+  
+  Quando("escolhar o deposito") do
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+  
+  Quando("preencher a forma de contratação e  se possui minuta  padrão") do
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+  
+  Quando("preencher o tipo de operação e convênio") do
+    pending # Write code here that turns the phrase above into concrete actions
+  end  
+  
+  
   
   Quando("escolher uma assessoria e contrutora") do
     $novo_emp.choose_assessoria

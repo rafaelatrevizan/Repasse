@@ -19,11 +19,37 @@ Então deverá ser exibidos o nome correto para os blocos de informações
 @campos_que_devem_existir
 Cenário: Validar no KS a exibição das informações sobre Dados do empreendimento e Condições do empreendimento
 Então é exibido os campos
-|NOME           |
-|Empreendimento |
-|Nº Contrato    |
-|Cenim          |
-|Banco          |
+|NOME                                    |
+|Empreendimento                          |
+|Número do Contrato Empresário/Piloto    |
+|Quantidade Unidades                     |
+|Quantidade de Torres                    |
+|Laudo de Avaliação                      |
+|Validade do Laudo                       |
+|Tipo de Matricula                       |
+|Estudo de Viabilidade                   |
+|Mapa de Vendas                          |
+|Possui Cód. GEP?                        |
+|Possui Planilha VMD?                    |
+|Validade do VMD                         |
+|Tipo de Imóvel                          |
+|Cenim/Centralizadora                    |
+|Banco                                   |
+|Tipo de Vaga de Garagem                 |
+|% de Financiamento                      |
+|Prazo Máx. Amortização                  |
+|Validade Certidão Unificada             |
+|Comprometimento Renda                   |
+|Validade Condição Especial              |
+|Validade CRF                            |
+|Depósito                                |
+|Tipo de Imóvel/Forma de Contratação     |
+|Possui Minuta Padrão                    |
+|Tipo de Operação                        |
+|Tipo de Convênio                        |
+|Observação                              |
+
+
 
 @campos_obrigatorios
 Cenário: Validar os campos obrigatórios
@@ -32,16 +58,27 @@ Então deverá ser exibido mensagem informativa
 
 @cadastra_emp
 Esquema do Cenário: Validar mensagem de cadastro com sucesso
-Quando preencher "<nome_emp>", <contrato> e <digito> sobre o empreendimento
+Quando preencher nome do empreendimento, contrato e "<digito>", "<unidades>" e "<torres>"
+E preencher os campos Laudo de avaliação e Validade
+E preencher Tipo de matricula e estudo de Viabilidade
+# E preencher Mapa de vendas e código GEP
+E preencher planilha VMD  e Validade
+E preencher Tipo de imovel
 E escolher  as opções de Ceninm e Banco 
+E preencher o campo tipo de Garagem
+E preencher os campos "<financiamento>", "<renda>" e "<prazo>"
+E preencher validade de condição especial, certidão unificada e CRF
+E escolhar o deposito
+E preencher a forma de contratação e  se possui minuta  padrão 
+E preencher o tipo de operação e convênio 
 E escolher uma assessoria e contrutora
 E clicar no botão gravar
 E preencher o campo bloco
 Então as informações deverão ser salvas com sucesso
 
 Exemplos:
-|nome_emp         |contrato  |digito|
-|teste                  |1111111111|66    |
+|digito| unidades |torres|
+|123   | 123      | 123  |
 
 # @empreendimento_mesmo_nome
 # Esquema do Cenário: Validar ao cadastrar um empreendimento com nome já existente

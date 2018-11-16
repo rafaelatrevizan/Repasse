@@ -17,6 +17,18 @@ Cenário: Validar no KS a exibição das informações sobre Cadastro de Constru
 Então é exibido os campos da tela construtora
 |NOME           |
 |Construtora    |
+|Endereço       |   
+|Número         |
+|Complemento    |
+|Bairro         |
+|CEP            |
+|Cidade         |
+|UF             |
+|Telefone       |
+|E-mail         |
+|CNPJ           |
+|Centralizadora |
+|Banco          |
 
 @campos_obrigatorios_const
 Cenário: Validar os campos obrigatórios
@@ -31,13 +43,13 @@ Então deverá ser exibido a mensagem  “Erro: Já existe uma Construtora cadas
 
 @nova_construtora
 Esquema do Cenário: Validar mensagem de cadastro com sucesso
-Quando preencher o campo "<construtora>"
+Quando preencher o campo  "<Endereço>",<Número>,"<Complemento>","<Bairro>",<CEP>,"<Cidade>","<Telefone>","<E-mail>"
 E clicar no botão Gravar na tela de construtora
 Então as informações do construtora deverão ser salvas com sucesso
 
 Exemplos:
-|construtora      |
-|teste rafaela 1   |
+|Endereço  |Número  |Complemento |Bairro  |CEP      |Cidade    |Telefone |E-mail             |
+|Rua teste |1234    |teste       |teste   |12345678 |São Paulo |12345678 |teste@teste.com    |
 
 @botao_voltar_const
 Cenário: Validar a ação do botão Voltar

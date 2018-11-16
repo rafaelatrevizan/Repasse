@@ -29,8 +29,9 @@ Então("deverá ser exibido a mensagem  “Erro: Já existe uma Construtora cada
   expect(mensagem.text).to eql 'Erro: Já existe uma Construtora cadastrada com esse nome.'
 end
 
-Quando("preencher o campo {string}") do |valor1|
-  @nova_const.dados_construtora(valor1)
+
+Quando("preencher o campo  {string},{int},{string},{string},{int},{string},{string},{string}") do |valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8|
+  @nova_const.dados_construtora(valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8)
 end
 
 Então("as informações do construtora deverão ser salvas com sucesso") do
