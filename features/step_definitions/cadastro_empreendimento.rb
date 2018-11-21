@@ -41,7 +41,8 @@ Quando("clicar no menu Cadastro empreendimento") do
 
   #Cenário 15: Validar mensagem de cadastro com sucesso
   Quando("preencher nome do empreendimento, contrato e {string}, {string} e {string}") do |valor1, valor2, valor3|
-      $novo_emp.dados_empreendimento1(valor1, valor2, valor3)
+    $novo_emp.nome_empreendimento_fake
+    $novo_emp.dados_empreendimento1(valor1, valor2, valor3)
   end
   
   Quando("preencher os campos Laudo de avaliação e Validade") do
@@ -52,16 +53,12 @@ Quando("clicar no menu Cadastro empreendimento") do
     $novo_emp.dados_empreendimento3
   end
   
-  # Quando("preencher Mapa de vendas e código GEP") do
-  #   pending # Write code here that turns the phrase above into concrete actions
-  # end
-  
   Quando("preencher planilha VMD  e Validade") do
     $novo_emp.dados_empreendimento4
   end
   
   Quando("preencher Tipo de imovel") do
-   $novo_emp.dados_empreendimento5
+   $novo_emp.tipo_imovel
   end
   
   Quando("escolher  as opções de Ceninm e Banco") do
@@ -71,29 +68,28 @@ Quando("clicar no menu Cadastro empreendimento") do
   
   Quando("preencher o campo tipo de Garagem") do
     $novo_emp.tipo_de_garagem
-    sleep 2
-  end
+ end
   
   Quando("preencher os campos {string}, {string} e {string}") do |string, string2, string3|
-    pending # Write code here that turns the phrase above into concrete actions
+    $novo_emp.dados_empreendimento6(string, string2, string3)
   end
   
   Quando("preencher validade de condição especial, certidão unificada e CRF") do
-    pending # Write code here that turns the phrase above into concrete actions
+    $novo_emp.preenchimento_validades
   end
   
   Quando("escolhar o deposito") do
-    pending # Write code here that turns the phrase above into concrete actions
+    $novo_emp.choose_deposito
+    sleep 2
   end
   
   Quando("preencher a forma de contratação e  se possui minuta  padrão") do
-    pending # Write code here that turns the phrase above into concrete actions
+    $novo_emp.forma_contratacao
   end
   
   Quando("preencher o tipo de operação e convênio") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end  
-  
+    $novo_emp.tipo_de_operacao_convenio
+  end   
   
   
   Quando("escolher uma assessoria e contrutora") do
@@ -124,4 +120,17 @@ Quando("clicar no menu Cadastro empreendimento") do
   
   Então("deverá retornar para a interface de consulta o empreendimento") do
     expect(page).to have_current_path('https://ksbrad-homolo.interservicer.com.br/webforms/addCenimListaEmpreendimento.aspx', url: true)
+  end
+
+  #Cenário 7: Validar ao cadastrar um empreendimento com nome já existente
+  Quando("preencher {string}, contrato e {string}, {string} e {string}") do |string, string2, string3, string4|
+    $novo_emp.nome_emp.set(string)
+    $novo_emp.dados_empreendimento1(string2, string3, string4)
+  end
+
+  Então("deverá ser exibido  mensagem “Nome já existente”.") do
+    sleep 1
+    page.execute_script "window.scrollTo(0,0)" 
+    texto_existente = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
+    expect(texto_existente.text).to eql  'Nome de Empreendimento já cadastrado.'
   end

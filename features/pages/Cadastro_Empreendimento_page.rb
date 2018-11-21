@@ -11,6 +11,18 @@ class CadastroEmpreendimentoPage < SitePrism::Page
     element :tipo_matricula, :xpath, '//select[@id = "ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_ddlTipoMatricula"]/option[2]'
     element :validade_laudo, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtDtLaudo'
     element :validade_VMD, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtValidadeVMD'
+    element :financiamento, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtPorcentagemFinanciamento'
+    element :renda, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtComprometimentoRenda'
+    element :prazo_amortização, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtPrazoMaxAmor'
+    element :validade_condicao_especial, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtDtCondicaoEspecial'
+    element :validade_certidao_unificada, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtDtValidadeCertUnificada'
+    element :validade_crf, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtDtValidadeCRF'
+    element :deposito_area_comum, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkDeposito_0'
+    element :deposito_individual, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkDeposito_1'
+    element :operacao_crim, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_0'
+    element :operacao_piloto, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_1'
+    element :operacao_repasse, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_2'
+
 
     element :bloco, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtBloco'
     
@@ -30,12 +42,14 @@ class CadastroEmpreendimentoPage < SitePrism::Page
         page.execute_script "window.scrollTo(0,1000000)" 
     end
 
-    def dados_empreendimento1(digit, qtdUnidades, qtdTorres)
+    def nome_empreendimento_fake
         nome_emp.click
         @nomeEmpreendimento = Faker::Name.name 
         nome_emp.set(@nomeEmpreendimento)
+    end
 
-        nome_emp.click
+    def dados_empreendimento1(digit, qtdUnidades, qtdTorres)
+        num_contrato.click
         @numero_Contrato = Faker::Number.number(10) #=> "1968353479"
         num_contrato.set(@numero_Contrato)
 
@@ -57,24 +71,68 @@ class CadastroEmpreendimentoPage < SitePrism::Page
     def dados_empreendimento4
         validade_VMD.click
         find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CalendarExtender1_day_4_5').click       
-   end
+    end
 
-   def dados_empreendimento5
+    def tipo_imovel
         find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoImovel_0').click #Comercial
         # find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoImovel_1').click #Residencial
-   end 
-
-   def tipo_de_garagem
-    find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoGaragem_0').click #Area comum
-    # find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoGaragem_1').click #Individualizada
+        sleep 1
     end 
 
     def choose_cenim
         find('option[value="183"]').select_option
+        sleep 1
     end
 
     def choose_banco
-        find('option[value="1"]').select_option
+        find(:xpath, '//option[text() ="Bradesco"]').select_option
+        sleep 1
+    end
+
+    def tipo_de_garagem
+        find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoGaragem_0').click #Area comum
+        # find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoGaragem_1').click #Individualizada
+        sleep 1
+    end 
+
+    def dados_empreendimento6(campo_financiamento, campo_renda, campo_prazo)
+        financiamento.click
+        financiamento.set(campo_financiamento)
+        renda.click
+        renda.set(campo_renda)
+        prazo_amortização.click
+        prazo_amortização.set(campo_prazo)
+    end 
+
+    def preenchimento_validades
+        validade_condicao_especial.click
+        find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CalendarExtender2_day_4_5').click       
+
+        validade_certidao_unificada.click
+        find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CalendarExtender3_day_4_5').click       
+
+        validade_crf.click
+        find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CalendarExtender4_day_4_5').click 
+    end 
+
+    def choose_deposito
+        deposito_area_comum.click 
+        deposito_individual.click
+        sleep 1
+    end
+
+    def forma_contratacao
+        find(:xpath, '//option[text() ="Construída"]').select_option
+        sleep 1
+    end
+
+    def tipo_de_operacao_convenio
+        operacao_crim.click
+        # operacao_piloto.click
+        # operacao_repasse.click
+        sleep 1
+
+        find(:xpath, '//select[@id ="ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_ddlTipoConvenio"]/option[3]').select_option
     end
 
     def choose_assessoria
@@ -93,4 +151,4 @@ class CadastroEmpreendimentoPage < SitePrism::Page
         find(:xpath, '//input[@value = "Voltar"]').click 
     end
 
-   end
+end
