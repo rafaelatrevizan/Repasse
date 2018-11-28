@@ -29,14 +29,16 @@ Quando("clicar no menu Cadastro empreendimento") do
 
   #Cenário 5: Campos obrigatórios
   Quando("clicar no botão Gravar") do
-    $novo_emp.scroll_ate_elemento
+    $novo_emp.scroll
     sleep 2
-    $novo_emp.button_gravar
+    $novo_emp.button_gravar_metodo
   end
   
   Então("deverá ser exibido mensagem informativa") do    
     texto1 = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
-    expect(texto1.text).to eql  'Erro: Dados obrigatórios não informados.'
+    expect(texto1.text).to eql  'Dados obrigatórios não informados.'
+    page.execute_script "window.scrollTo(0,0)" 
+    sleep 1
   end
 
   #Cenário 15: Validar mensagem de cadastro com sucesso
@@ -98,9 +100,10 @@ Quando("clicar no menu Cadastro empreendimento") do
   end
   
   Quando("clicar no botão gravar") do
-    $novo_emp.scroll_ate_elemento
-    sleep 2
-    $novo_emp.button_gravar   
+    sleep 1
+    $novo_emp.scroll
+    # $novo_emp.button_gravar
+    $novo_emp.button_gravar_metodo    
   end
 
   Quando("preencher o campo bloco") do
@@ -114,7 +117,7 @@ Quando("clicar no menu Cadastro empreendimento") do
 
   #Cenário 16: Validar a ação do botão Voltar
   Quando("clicar no botão Voltar") do
-    $novo_emp.scroll_ate_elemento
+    $novo_emp.scroll
     $novo_emp.click_button_voltar
   end
   

@@ -1,7 +1,7 @@
 #language: pt
 #utf-8
 
-@cadastro_const
+@construtora
 Funcionalidade: Cadastrar nova construtora
 Eu como usuário do portal KS
 Quero acessar o menu de construtora
@@ -33,13 +33,18 @@ Então é exibido os campos da tela construtora
 @campos_obrigatorios_const
 Cenário: Validar os campos obrigatórios
 Quando clicar no botão Gravar na tela de construtora
-Então deverá ser exibido mensagem informativa
+Então deverá ser exibido mensagem de alerta informativa 
 
-@nome_duplicado_construtora
-Cenário: Validar nome duplicado de Construtora
-Quando preencho o campo Construtora com um nome já existente
+@cnpj_duplicado_construtora
+Esquema do Cenário: Validar nome duplicado de Construtora
+Quando preencho o campo CNPJ com um já existente
+E preencher o campo  "<Endereço>",<Número>,"<Complemento>","<Bairro>",<CEP>,"<Cidade>","<Telefone>","<E-mail>"
 E clicar no botão Gravar na tela de construtora
-Então deverá ser exibido a mensagem  “Erro: Já existe uma Construtora cadastrada com esse nome. ”
+Então deverá ser exibido a mensagem  “Erro: Já existe uma Construtora cadastrada com esse cnpj.”
+
+Exemplos:
+|Endereço  |Número  |Complemento |Bairro  |CEP      |Cidade    |Telefone |E-mail             |
+|Rua teste |1234    |teste       |teste   |12345678 |São Paulo |12345678 |teste@teste.com    |
 
 @nova_construtora
 Esquema do Cenário: Validar mensagem de cadastro com sucesso

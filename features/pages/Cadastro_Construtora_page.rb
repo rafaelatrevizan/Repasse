@@ -18,9 +18,6 @@ class CadastroConstrutoraPage < SitePrism::Page
     element :nome_centralizadora, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_ddlCentralizadora'
     element :nome_banco, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_ddlBanco'
     element :nome_bradesco, :xpath, '//select[@id = "ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_ddlBanco"]/option[2]'
-
-
-
     
     def menu_construtora
         construtora.click
@@ -30,10 +27,21 @@ class CadastroConstrutoraPage < SitePrism::Page
         link_construtora.click
     end
 
-    def dados_construtora(endereco, numero, complemento, bairro, cep, cidade, telefone, email)
+    def cnpj_fake
+        nome_cnpj.click
+        @numeroCNPJ = Faker::CNPJ.numeric 
+        nome_cnpj.set(@numeroCNPJ)
+    end
+    
+    def cnpj_existente
+        nome_cnpj.click
+        nome_cnpj.set('99999999999999')
+    end
+
+    def dados_construtora(endereco, numero, complemento, bairro, cep, cidade, telefone, email)   
         nome_contrutora.click
         @nomeConstrutora = Faker::Name.name 
-        nome_contrutora.set(@nomeConstrutora)
+        nome_contrutora.set(@nomeConstrutora)     
         
         nome_endereco.set(endereco)
         nome_numero.set(numero)
@@ -50,11 +58,7 @@ class CadastroConstrutoraPage < SitePrism::Page
         find('option[value="3"]').select_option
 
         nome_telefone.set(telefone)
-        nome_email.set(email)
-
-        nome_cnpj.click
-        @numeroCNPJ = Faker::CNPJ.numeric 
-        nome_cnpj.set(@numeroCNPJ)
+        nome_email.set(email)      
         
         nome_centralizadora.click       
         find('option[value="181"]').select_option

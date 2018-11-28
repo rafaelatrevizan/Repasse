@@ -22,6 +22,7 @@ class CadastroEmpreendimentoPage < SitePrism::Page
     element :operacao_crim, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_0'
     element :operacao_piloto, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_1'
     element :operacao_repasse, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_chkTipoOperacao_2'
+    element :button_gravar, :xpath,  '//input[@value = "Gravar"]'
 
 
     element :bloco, :id, 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_txtBloco'
@@ -34,12 +35,12 @@ class CadastroEmpreendimentoPage < SitePrism::Page
         novo_empreendimento.click
     end
     
-    def button_gravar
-        find(:xpath, '//input[@value = "Gravar"]').click               
+    def button_gravar_metodo
+        button_gravar.click               
     end
 
-    def scroll_ate_elemento
-        page.execute_script "window.scrollTo(0,1000000)" 
+    def scroll
+        page.execute_script "window.scrollTo(0,1000)" 
     end
 
     def nome_empreendimento_fake

@@ -1,7 +1,7 @@
 #language: pt
 #utf-8
 
-@cadastro_emp
+@empreendimento
 Funcionalidade: Cadastrar novo empreendimento
 Eu como usuário do portal KS
 Quero acessar o menu de empreendimento
@@ -101,7 +101,7 @@ Então deverá ser exibido  mensagem “Nome já existente”.
 
 Exemplos:
 |empreendimento |digito| unidades |torres| financiamento | renda    | prazo |
-| teste         |123   | 123      | 123  |  12345        |  12345   | 12345 |
+| qwert         |123   | 123      | 123  |  12345        |  12345   | 12345 |
 
 @botao_voltar
 Cenário: Validar a ação do botão Voltar
