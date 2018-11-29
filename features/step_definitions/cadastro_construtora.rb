@@ -38,12 +38,15 @@ Então("deverá ser exibido a mensagem  “Erro: Já existe uma Construtora cada
 end
 
 #Esquema do Cenário 25: Validar mensagem de cadastro com sucesso
+Quando("preencho o campo CNPJ com um ainda não existente") do
+  @nova_const.cnpj_fake
+end
+
 Quando("preencher o campo  {string},{int},{string},{string},{int},{string},{string},{string}") do |valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8|
   @nova_const.dados_construtora(valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8)
 end
 
 Então("as informações do construtora deverão ser salvas com sucesso") do
-  @nova_const.cnpj_fake
   mensagem_sucesso = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
   expect(mensagem_sucesso.text).to eql 'Construtora cadastrada com sucesso.'
 end

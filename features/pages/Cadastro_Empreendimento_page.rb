@@ -49,11 +49,18 @@ class CadastroEmpreendimentoPage < SitePrism::Page
         nome_emp.set(@nomeEmpreendimento)
     end
 
-    def dados_empreendimento1(digit, qtdUnidades, qtdTorres)
+    def contrato_empreendimento_fake
         num_contrato.click
         @numero_Contrato = Faker::Number.number(10) #=> "1968353479"
         num_contrato.set(@numero_Contrato)
+    end
 
+    def contrato_empreendimento_existente
+        num_contrato.click
+        num_contrato.set("123232321")
+    end
+
+    def dados_empreendimento1(digit, qtdUnidades, qtdTorres)
         digito.set(digit)
         unidade.set(qtdUnidades)
         torres.set(qtdTorres)

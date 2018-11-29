@@ -101,11 +101,33 @@ Então deverá ser exibido  mensagem “Nome já existente”.
 
 Exemplos:
 |empreendimento |digito| unidades |torres| financiamento | renda    | prazo |
-| qwert         |123   | 123      | 123  |  12345        |  12345   | 12345 |
+| qwert         |12    | 123      | 123  |  12345        |  12345   | 12345 |
 
 @botao_voltar
 Cenário: Validar a ação do botão Voltar
 Quando clicar no botão Voltar
 Então deverá retornar para a interface de consulta o empreendimento
 
+@empreendimento_mesmo_contrato
+Esquema do Cenário: Validar ao cadastrar um empreendimento com contrato já existente
+Quando preencher o campo Contrato com um já existente
+E preencher "<digito>", "<unidades>" e "<torres>"
+E preencher os campos Laudo de avaliação e Validade
+E preencher Tipo de matricula e estudo de Viabilidade
+# E preencher Mapa de vendas e código GEP
+E preencher planilha VMD  e Validade
+E preencher Tipo de imovel
+E escolher  as opções de Ceninm e Banco 
+E preencher o campo tipo de Garagem
+E preencher os campos "<financiamento>", "<renda>" e "<prazo>"
+E preencher validade de condição especial, certidão unificada e CRF
+E escolhar o deposito
+E preencher a forma de contratação e  se possui minuta  padrão 
+E preencher o tipo de operação e convênio 
+E escolher uma assessoria e contrutora
+E clicar no botão gravar
+Então deverá ser exibido  mensagem “Contrato de Empreendimento já cadastrado.”.
 
+Exemplos:
+|digito| unidades |torres| financiamento | renda    | prazo |
+|12    | 123      | 123  |  12345        |  12345   | 12345 |

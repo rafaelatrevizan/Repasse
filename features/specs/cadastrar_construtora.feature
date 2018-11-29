@@ -48,7 +48,8 @@ Exemplos:
 
 @nova_construtora
 Esquema do Cenário: Validar mensagem de cadastro com sucesso
-Quando preencher o campo  "<Endereço>",<Número>,"<Complemento>","<Bairro>",<CEP>,"<Cidade>","<Telefone>","<E-mail>"
+Quando preencho o campo CNPJ com um ainda não existente
+E preencher o campo  "<Endereço>",<Número>,"<Complemento>","<Bairro>",<CEP>,"<Cidade>","<Telefone>","<E-mail>"
 E clicar no botão Gravar na tela de construtora
 Então as informações do construtora deverão ser salvas com sucesso
 

@@ -11,5 +11,4 @@ class HomePage < SitePrism::Page
     visit $URL
     end
 
-
 end

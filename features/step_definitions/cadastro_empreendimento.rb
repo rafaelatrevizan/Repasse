@@ -44,6 +44,7 @@ Quando("clicar no menu Cadastro empreendimento") do
   #Cenário 15: Validar mensagem de cadastro com sucesso
   Quando("preencher nome do empreendimento, contrato e {string}, {string} e {string}") do |valor1, valor2, valor3|
     $novo_emp.nome_empreendimento_fake
+    $novo_emp.contrato_empreendimento_fake
     $novo_emp.dados_empreendimento1(valor1, valor2, valor3)
   end
   
@@ -128,6 +129,7 @@ Quando("clicar no menu Cadastro empreendimento") do
   #Cenário 7: Validar ao cadastrar um empreendimento com nome já existente
   Quando("preencher {string}, contrato e {string}, {string} e {string}") do |string, string2, string3, string4|
     $novo_emp.nome_emp.set(string)
+    $novo_emp.contrato_empreendimento_fake
     $novo_emp.dados_empreendimento1(string2, string3, string4)
   end
 
@@ -136,4 +138,21 @@ Quando("clicar no menu Cadastro empreendimento") do
     page.execute_script "window.scrollTo(0,0)" 
     texto_existente = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
     expect(texto_existente.text).to eql  'Nome de Empreendimento já cadastrado.'
+  end
+
+  #Cenário: Validar ao cadastrar um empreendimento com contrato já existente
+  Quando("preencher o campo Contrato com um já existente") do
+    $novo_emp.nome_empreendimento_fake
+    $novo_emp.contrato_empreendimento_existente
+  end
+  
+  Quando("preencher {string}, {string} e {string}") do |string, string1, string2|
+    $novo_emp.dados_empreendimento1(string, string1, string2)  
+  end
+  
+  Então("deverá ser exibido  mensagem “Contrato de Empreendimento já cadastrado.”.") do
+    sleep 1
+    page.execute_script "window.scrollTo(0,0)" 
+    texto_existente = find('#ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_lblMensagem')
+    expect(texto_existente.text).to eql  'Contrato de Empreendimento já cadastrado.'
   end

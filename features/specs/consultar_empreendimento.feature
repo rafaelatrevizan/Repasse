@@ -1,7 +1,7 @@
 #language: pt
 #utf-8
 
-@consulta
+@consulta_empreendimento
 Funcionalidade: Consultar empreendimento
 Eu como usuário do portal KS
 Quero acessar o menu de empreendimento
