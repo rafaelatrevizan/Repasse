@@ -1,4 +1,4 @@
-class LoginPage < SitePrism::Page
+class LoginPageKS < SitePrism::Page
     element :usuario_ks, :id, 'txtLogin'
     element :senha_ks, :id, 'txtSenha'
     element :button_OK, :xpath, '//input[@type = "submit"]'
