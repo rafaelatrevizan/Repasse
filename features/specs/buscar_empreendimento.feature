@@ -12,4 +12,6 @@ Dado que esteja no Portal Credimob
 
 Cenario: Validar a quantidade de empreendimentos listados
 Quando clicar no botão Procurar
-Então deverá ser listados 50 empreendimentos
+Então deverá ser listados empreendimentos
+
+Cenario: Validar alteração do campo 

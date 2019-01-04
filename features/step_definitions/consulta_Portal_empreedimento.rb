@@ -1,7 +1,13 @@
 Quando("clicar no botão Procurar") do
-    pending # Write code here that turns the phrase above into concrete actions
+  $repasse = BuscarConsultasPage.new
+  $repasse.click_menu_repasse
+  expect(page).to have_current_path('https://portalcredimobhomolog.interservicer.com.br/Repasse/Index', url: true)  
+  sleep 1
+  $repasse.clicar_button_pesquisar
+  sleep 1
+  
   end
   
-  Então("deverá ser listados {int} empreendimentos") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
+  Então("deverá ser listados empreendimentos") do
+  $repasse.paginacao
   end
